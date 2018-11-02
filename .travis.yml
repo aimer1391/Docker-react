@@ -2,8 +2,21 @@ sudo: required
 services:
   - docker
 
-before_install
+before_install:
   - docker build -t aimer1319/docker-react -f Dockerfile.dev .
 
 script:
   - docker run aimer1319/docker-react npm run test -- --coverage
+
+  deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "Dokcer-React"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-1-065478386807"
+  bucket_path: "Dokcer-React"
+  on:
+    brach: master
+  access_key_id: "$AWS_Access_Key"
+  secret_access_key:
+    secure: "$AWS_Secret_key"
