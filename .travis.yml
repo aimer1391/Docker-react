@@ -16,7 +16,7 @@ script:
   bucket_name: "elasticbeanstalk-us-east-1-065478386807"
   bucket_path: "Docker-React"
   on:
-    brach: master
+    branch: master
   access_key_id: "$AWS_ACCESS_KEY"
   secret_access_key:
     secure: "$AWS_SECRET_KEY"
